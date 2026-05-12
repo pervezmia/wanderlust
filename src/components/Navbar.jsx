@@ -7,11 +7,13 @@ const Navbar = () => {
     { path: "/", name: "Home" },
     { path: "/destination", name: "Destinations" },
     { path: "/my-booking", name: "My Bookings" },
+    
   ];
   const navLinksLast = [
     { path: "/profile", name: "Profile" },
     { path: "/login", name: "Login" },
     { path: "/sign-up", name: "Sign Up" },
+    { path: "/add-destination", name: "Add Destination" },
   ]
   return (
     <nav className="bg-base-100 shadow-sm ">
