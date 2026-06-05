@@ -10,24 +10,39 @@ import {
   TextField,
   Card,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddDestinationPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
-        const fromData = new FormData(e.target);
+        const fromData = new FormData(e.currentTarget);
         const destination = Object.fromEntries(fromData.entries());
         console.log(destination);
 
-        const res = await fetch(`http://localhost:5000/destination`,{
+        try{
+          const res = await fetch(`http://localhost:5000/destination`,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(destination)
         })
+        if (!res.ok){
+          toast.error("Server responded with an error!");
+          return;
+        }
         const data = await res.json();
+        
         console.log(data);
+        toast.success(`Added ${destination.destinationName} in destination done !`)
+        
+        } catch (error){
+          console.log(error);
+          toast.error("Network error! Is your backend server running?");
+        }
+        redirect("/destinations")
     }
   return (
     <div className="p-5 max-w-7xl mx-auto">

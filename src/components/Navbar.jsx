@@ -5,22 +5,18 @@ import React from "react";
 const Navbar = () => {
   const navLinks = [
     { path: "/", name: "Home" },
-    { path: "/destination", name: "Destinations" },
+    { path: "/destinations", name: "Destinations" },
     { path: "/my-booking", name: "My Bookings" },
-    
+    { path: "/add-destination", name: "Add Destination" },
   ];
   const navLinksLast = [
     { path: "/profile", name: "Profile" },
     { path: "/login", name: "Login" },
     { path: "/sign-up", name: "Sign Up" },
-    { path: "/add-destination", name: "Add Destination" },
-  ]
+  ];
   return (
     <nav className="bg-base-100 shadow-sm ">
       <div className="navbar max-w-[90%] mx-auto ">
-
-        
-
         <div className="navbar-start hidden md:flex">
           <ul className="menu menu-horizontal px-1">
             {navLinks.map((link, index) => (
@@ -64,18 +60,23 @@ const Navbar = () => {
                 </li>
               ))}
               {navLinksLast.map((link, index) => (
-              <li key={index}>
-                <Link href={link.path}>
-                  <span>{link.name}</span>
-                </Link>
-              </li>
-            ))}
+                <li key={index}>
+                  <Link href={link.path}>
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          <Image src={"/assets/Wanderlast.png"} height={150} width={150} alt="logo"></Image>
+          <Image
+            src={"/assets/Wanderlast.png"}
+            height={150}
+            width={150}
+            alt="logo"
+          ></Image>
         </div>
-        
-         <div className="navbar-end hidden md:flex">
+
+        <div className="navbar-end hidden md:flex">
           <ul className="menu menu-horizontal px-1">
             {navLinksLast.map((link, index) => (
               <li key={index}>
@@ -86,7 +87,6 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-
       </div>
     </nav>
   );
