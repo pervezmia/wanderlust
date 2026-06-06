@@ -1,3 +1,4 @@
+import BookingCard from "@/components/BookingCard";
 import { DeleteAlert } from "@/components/DeleteAlert";
 import EditModal from "@/components/EditModal";
 import { Button } from "@heroui/react";
@@ -31,18 +32,18 @@ const DestinationDetailsPage = async ({ params }) => {
       <div className="space-y-2.5">
         <div className="flex justify-between items-center">
           <Link href={"/destinations"} className="">
-             <Button variant="secondary"><GoArrowLeft /> Back to destination</Button>
+            <Button variant="secondary">
+              <GoArrowLeft /> Back to destination
+            </Button>
           </Link>
           <div className="flex gap-2.5">
-            
-              {/* edit btn */}
-            <EditModal destination = {destination}></EditModal>
-            <DeleteAlert destination = {destination}></DeleteAlert>
-            
-              {/* <Button variant="secondary">
+            {/* edit btn */}
+            <EditModal destination={destination}></EditModal>
+            <DeleteAlert destination={destination}></DeleteAlert>
+
+            {/* <Button variant="secondary">
                  <RxUpdate /> Update 
               </Button> */}
-         
           </div>
         </div>
         <Image
@@ -53,21 +54,24 @@ const DestinationDetailsPage = async ({ params }) => {
           className="w-full h-100 rounded-lg object-cover"
         />
       </div>
-      <div className="">
-        <div className="flex items-center gap-1">
-          <FaLocationDot />
-          <span>{country}</span>
-        </div>
-        <div>
-          <div className="font-bold text-xl">{destinationName}</div>
-
+      <div className="flex justify-between">
+        <div className="flex-2">
           <div className="flex items-center gap-1">
-            <BsCalendarDay />
-            {duration}
+            <FaLocationDot />
+            <span>{country}</span>
           </div>
+          <div>
+            <div className="font-bold text-xl">{destinationName}</div>
+
+            <div className="flex items-center gap-1">
+              <BsCalendarDay />
+              {duration}
+            </div>
+          </div>
+          <h2 className="font-bold">Over View</h2>
+          <p>{description}</p>
         </div>
-        <h2 className="font-bold">Over View</h2>
-        <p>{description}</p>
+        <BookingCard destination={destination}></BookingCard>
       </div>
     </div>
   );

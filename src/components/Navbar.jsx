@@ -19,7 +19,7 @@ const Navbar = () => {
   const navLinks = [
     { path: "/", name: "Home" },
     { path: "/destinations", name: "Destinations" },
-    { path: "/my-booking", name: "My Bookings" },
+    { path: "/my-bookings", name: "My Bookings" },
     { path: "/add-destination", name: "Add Destination" },
   ];
   const navLinksLast = [
