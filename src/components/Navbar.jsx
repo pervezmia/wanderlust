@@ -1,8 +1,21 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+  console.log(session);
+  const user = session?.user;
+  console.log(user?.name);
+
+  //sign out
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  }
+
   const navLinks = [
     { path: "/", name: "Home" },
     { path: "/destinations", name: "Destinations" },
@@ -10,9 +23,9 @@ const Navbar = () => {
     { path: "/add-destination", name: "Add Destination" },
   ];
   const navLinksLast = [
-    { path: "/profile", name: "Profile" },
+    // { path: "/profile", name: "Profile" },
     { path: "/login", name: "Login" },
-    { path: "/sign-up", name: "Sign Up" },
+    { path: "/signup", name: "Sign Up" },
   ];
   return (
     <nav className="bg-base-100 shadow-sm ">
@@ -77,14 +90,39 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end hidden md:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navLinksLast.map((link, index) => (
-              <li key={index}>
-                <Link href={link.path}>
-                  <span>{link.name}</span>
-                </Link>
-              </li>
-            ))}
+          <ul className="menu menu-horizontal px-1 flex items-center ">
+            {user ? (
+              <>
+                {" "}
+                <li>
+                  <Link href={"/profile"}>
+                    <span>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Avatar className="rounded-full">
+                    <Avatar.Image
+                      referrerPolicy="no-referrer"
+                      alt={user?.name}
+                      src={user?.image}
+                    />
+                    <Avatar.Fallback >{user.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar>
+                </li>
+                <li>
+                  <Button variant="danger" onClick={handleSignOut}>Log Out</Button>
+                </li>{" "}
+              </>
+            ) : (
+              navLinksLast.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.path}>
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </div>
