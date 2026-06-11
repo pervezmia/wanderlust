@@ -7,9 +7,9 @@ import React from "react";
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
-  console.log(session);
+  // console.log(session);
   const user = session?.user;
-  console.log(user?.name);
+  // console.log(user?.name);
 
   //sign out
   const handleSignOut = async () => {
