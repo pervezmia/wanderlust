@@ -161,17 +161,10 @@ JWT_SECRET=
 
 # 📸 Screenshots
 
-> Add your project screenshots here.
+### 🏠 Home Page
 
-Example:
+![Home Page](./screenshots/home.png)
 
-```
-/public/screenshots/home.png
-
-/public/screenshots/login.png
-
-/public/screenshots/dashboard.png
-```
 
 ---
 
