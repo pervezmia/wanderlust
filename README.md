@@ -165,6 +165,14 @@ JWT_SECRET=
 
 ![Home Page](./screenshots/home.png)
 
+### Destination
+ 
+![Home Page](./screenshots/destination.png)
+
+### Sign in page
+
+![Home Page](./screenshots/signIn.png)
+
 
 ---
 
