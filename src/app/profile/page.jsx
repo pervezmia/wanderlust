@@ -44,7 +44,7 @@ const ProfilePage = () => {
  
                                 <div className="pb-2">
                                     <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-                                        Pervez Hossain
+                                        Pervez
                                     </h2>
                                     <p className="text-slate-500 font-medium">
                                         Full-Stack Developer
@@ -102,7 +102,7 @@ const ProfilePage = () => {
                                 Full Name
                             </label>
                             <Input
-                                defaultValue="Pervez Hossain"
+                                defaultValue="Pervez"
                                 startContent={<User className="w-5 h-5 text-slate-400" />}
                                 className="border-2 border-slate-200 hover:border-blue-600/50 focus-within:border-blue-600 transition-all duration-300 h-14 bg-white w-full rounded-2xl"
                             />
