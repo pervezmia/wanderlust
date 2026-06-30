@@ -3,8 +3,9 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   experimental: {
-  serverExternalPackages: ['@better-auth/kysely-adapter'],
+    serverComponentsExternalPackages: ['@better-auth/kysely-adapter'],
   },
+  reactCompiler: true,
   images: {
     remotePatterns: [
       {
