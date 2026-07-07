@@ -15,23 +15,24 @@ const MyBookingsPage = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`);
 
   const bookings = await res.json();
-  console.log(bookings);
+  // console.log(bookings);
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto p-2">
       <h1 className="text-center mt-4">My bookings </h1>
-      <div className="flex flex-col items-center min-w-3xl space-y-3 mt-3 mb-3">
+      <div className="flex flex-col items-center md:min-w-3xl space-y-3 mt-3 mb-3">
         {bookings.map((booking) => (
           <div key={booking._id} className="">
-            <div className=" min-w-3xl border-2 border-gray-300 p-2 flex gap-5">
+            <div className="border-2 border-gray-300 p-2 flex gap-5">
               <Image
                 src={booking.imageUrl}
                 alt={booking.destinationName}
                 height={200}
                 width={200}
+                className="w-40 h-40"
               />
               <div className="space-y-1">
-                <h2 className="font-bold text-2xl">{booking.destinationName}</h2>
+                <h2 className="font-bold text-xl">{booking.destinationName}</h2>
                 <p>
                     {
                         new Date (booking.departureDate).toLocaleDateString("en-us", {
@@ -41,8 +42,8 @@ const MyBookingsPage = async () => {
                         })
                     }
                 </p>
-                <p>Booking Id: {booking._id}</p>
-                <h2 className="font-bold text-4xl text-cyan-500">${booking.price}</h2>
+                <p className="text-sm">Booking Id: {booking._id}</p>
+                <h2 className="font-bold text-2xl text-cyan-500">${booking.price}</h2>
                 <BookingCancelAlert bookingId={booking._id}/>
               </div>
             </div>

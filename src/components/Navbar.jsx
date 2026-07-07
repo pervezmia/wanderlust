@@ -3,18 +3,25 @@ import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const router = useRouter();
   const { data: session } = authClient.useSession();
-  // console.log(session);
+  console.log(session);
   const user = session?.user;
-  // console.log(user?.name);
+  // console.log(user?.image);
 
   //sign out
   const handleSignOut = async () => {
     await authClient.signOut();
-  }
+    router.push("/login");
+    toast.success("Log out successfully!")
+    
+  };
+  
 
   const navLinks = [
     { path: "/", name: "Home" },
@@ -72,13 +79,41 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              {navLinksLast.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.path}>
-                    <span>{link.name}</span>
-                  </Link>
-                </li>
-              ))}
+              {user ? (
+                <>
+                  <li>
+                    <Link href={"/profile"}>
+                      <span>Profile</span>
+                    </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Avatar className="rounded-full">
+                      <Avatar.Image
+                        referrerPolicy="no-referrer"
+                        alt={user?.name}
+                        src={user?.image}
+                      />
+                      <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                    </Avatar>
+                  </li>
+                  <li>
+                    <Button variant="danger" onClick={handleSignOut}>
+                      Log Out
+                    </Button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {navLinksLast.map((link, index) => (
+                    <li key={index}>
+                      <Link href={link.path}>
+                        <span>{link.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </>
+              )}
             </ul>
           </div>
           <Image
@@ -107,11 +142,13 @@ const Navbar = () => {
                       alt={user?.name}
                       src={user?.image}
                     />
-                    <Avatar.Fallback >{user.name.charAt(0)}</Avatar.Fallback>
+                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                   </Avatar>
                 </li>
                 <li>
-                  <Button variant="danger" onClick={handleSignOut}>Log Out</Button>
+                  <Button variant="danger" onClick={handleSignOut}>
+                    Log Out
+                  </Button>
                 </li>{" "}
               </>
             ) : (

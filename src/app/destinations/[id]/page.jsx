@@ -38,7 +38,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
   console.log(destinationName, imageUrl);
   return (
-    <div className="max-w-5xl mx-auto grid grid-cols-1 py-4 space-y-2.5">
+    <div className="max-w-5xl mx-auto grid grid-cols-1 py-4 space-y-2.5 px-2">
       <div className="space-y-2.5">
         <div className="flex justify-between items-center">
           <Link href={"/destinations"} className="">
@@ -64,7 +64,7 @@ const DestinationDetailsPage = async ({ params }) => {
           className="w-full h-100 rounded-lg object-cover"
         />
       </div>
-      <div className="flex justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="flex-2">
           <div className="flex items-center gap-1">
             <FaLocationDot />

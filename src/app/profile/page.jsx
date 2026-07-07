@@ -1,15 +1,21 @@
 'use client';
+
+import Image from "next/image";
+
  
-import Image from 'next/image';
+
 
 const ProfilePage = () => {
+    
     return (
        
-        <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+        <div className="max-w-md mx-auto mt-10 p-6 shadow ">
             <div className="flex flex-col items-center">
                 <Image
-                    src="https://i.pravatar.cc/150"
+                    src="https://images.unsplash.com/photo-1615911907304-d418c903b058"
                     alt="Profile"
+                    width={50}
+                    height={30}
                     className="w-24 h-24 rounded-full object-cover mb-4"
                 />
                 <h2 className="text-xl font-bold">Pervez Hossain</h2>
