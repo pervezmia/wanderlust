@@ -20,15 +20,15 @@ const MyBookingsPage = async () => {
   return (
     <div className="max-w-7xl mx-auto p-2">
       <h1 className="text-center mt-4">My bookings </h1>
-      <div className="flex flex-col items-center md:min-w-3xl space-y-3 mt-3 mb-3">
+      <div className="flex flex-col items-center space-y-3 mt-3 mb-3">
         {bookings.map((booking) => (
-          <div key={booking._id} className="">
+          <div key={booking._id} className="min-w-3xl">
             <div className="border-2 border-gray-300 p-2 flex gap-5">
               <Image
                 src={booking.imageUrl}
                 alt={booking.destinationName}
-                height={200}
-                width={200}
+                height={100}
+                width={100}
                 className="w-40 h-40"
               />
               <div className="space-y-1">
